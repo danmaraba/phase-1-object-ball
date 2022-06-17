@@ -139,20 +139,21 @@ function awayTeam(){
     return game.home
 }
 
+function teamColors(teamName){
+    return findByTeamName(teamName).colors
+}
 function playersObject(){
     return {...homeTeam().players, ...awayTeam().players}
 }
 
-function teamColors(teamName){
-    return findByTeamName(teamName).colors
-}
+function bigFeetPlayers(){
+    const playerArray = Object.entries(players)
+    return playerArray.filter(player => player[1].shoe > 15).map(pAr => pAr[0])
+} 
+
 
 function findByTeamName(teamName){
     return teams.find(team => team.teamName === teamName)
-}
-
-function teamName(){
-    return teams.map(team => team.teamName)
 }
 
 function shoeSize(){
@@ -160,7 +161,8 @@ function shoeSize(){
     return stats.map(stat => stat.shoe)
 }
 
-function bigFeetPlayers(){
-    const playerArray = Object.entries(players)
-    return playerArray.filter(player => player[1].shoe > 15).map(pAr => pAr[0])
-} 
+function teamName(){
+    return teams.map(team => team.teamName)
+}
+
+
